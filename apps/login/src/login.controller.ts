@@ -8,6 +8,6 @@ export class LoginController {
 
   @EventPattern('new_login')
   handleNewLogin(data: any) {
-    console.log('Este es el evento entrante', data);
+    console.log('Estos son los datos que se manda desde el puerto 3000', data);
   }
 }
