@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, Res } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
@@ -6,7 +6,10 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Post()
-  newLogin(@Body() body: any): string {
-    return this.appService.newLogin(body);
+  async newLogin(@Body() body: any, @Res() res: any, @Req() req: any) {
+    const respuesta = await this.appService.newLogin(body, res);
+
+    res.send(respuesta);
+    //  return this.appService.newLogin(body);
   }
 }
